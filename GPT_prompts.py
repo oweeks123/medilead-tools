@@ -1,0 +1,1 @@
+extract_point = "Extract the sailient points from the following article: "
