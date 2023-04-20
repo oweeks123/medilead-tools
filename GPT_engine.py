@@ -1,17 +1,18 @@
 import pandas as pd
 import openai
+from GPT_prompts import extract_point
 
-#note_input = "34 female, 3 days of dysuria, frequency, haematuria, fever, not responded to abx, ref urology"
+note_input = "34 female, 3 days of dysuria, frequency, haematuria, fever, not responded to abx, ref urology"
 
-#notes = (f"{note_input}")
+notes = (f"{note_input}")
 
-#prompt = f"summarize paragraph in a letter format starting with Dear colleague: {notes}"
+prompt = f"summarize paragraph in a letter format starting with Dear colleague: {notes}"
 
 class NoteEngine:
     # Define OpenAI API key 
-    openai.api_key = "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"
+    openai.api_key = "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"
     # Set up the model and prompt
-    model_engine = "text-davinci-003"
+    model_engine = "text-curie-001"
     def __init__(self, note_input, task):
         self.note_input = note_input
         self.question = task
@@ -30,3 +31,5 @@ class NoteEngine:
         response = completion.choices[0].text
         return response
 
+
+print(NoteEngine(notes, prompt).GPT_engine())
