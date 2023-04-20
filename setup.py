@@ -71,7 +71,28 @@ def main():
             response = NoteEngine(extract_questions, combined_prompt).GPT_engine()
             st.write(response)
         else: pass
-    else: pass        
+    else: pass  
+
+    if side_menu=='Extract Features':
+        st.title('Extract Points')
+        st.subheader('This tool uses the ChatGPT AI engine to extract the salient deatures from an extract of text.')
+        note_capture = st.selectbox('Note format', note_method)
+
+        if note_capture == 'Text input':
+            note_input = st.text_area('Enter notes')
+
+            if st.button('Create'):
+                output = NoteEngine(tasks, note_input).GPT_engine()
+                st.write(output)
+
+        if note_capture in ['Image','Text upload']:
+            file_uploader = st.file_uploader('Select file')
+
+            if st.button('Create'):
+                output = NoteEngine(extract_questions, note_input).GPT_engine()
+                st.write(output)
+            else: pass
+        else: pass      
 
 if __name__ == '__main__':
     main()
